@@ -1,0 +1,28 @@
+name: FSL-React-Challenge
+
+on:
+  push:
+    branches: [main]
+
+defaults: 
+  run:
+    working-directory: ./codebase/rdicidr-0.1.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: USING Node 15
+        uses: actions/setup-node@v3
+        with:
+          node-versions: '15'
+
+      - run: npm install
+      - run: npm run link
+      - run: |
+          npm install prettier
+          npm run prettier -- --write
+      - run: CI=true npm run true
+      - run: npm run build
