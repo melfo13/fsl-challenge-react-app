@@ -1,0 +1,26 @@
+name: FSL-React-app
+
+on:
+  push: 
+    branch: [main]
+
+default:
+  run:
+    working-directoy: ./codebase/rdicidr-0.1.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node 15
+        uses: actions/setup-node@v3
+        with:
+          node-version: '15'
+      - run: npm install
+      - run: npm run lint
+      - run: |
+          npm install prettier
+          npm run prettier
+      - run: CI=true npm run test
+      - run: npm run build
