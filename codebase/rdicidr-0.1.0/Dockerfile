@@ -1,15 +1,21 @@
 FROM node:15 as builder
 
-WORKDIR /app
+WORKDIR
 
-COPY package*.json ./
+COPY
 
-RUN npm install
+RUN 
 
-COPY . . 
+COPY
 
-RUN npm run build
+RUN 
 
-EXPOSE 3000
+FROM
 
-CMD ["npm", "start"]
+WORKDIR
+
+COPY
+
+RUN 
+
+ENTRYPOINT 
